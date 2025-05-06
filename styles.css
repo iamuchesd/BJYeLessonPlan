@@ -1,0 +1,233 @@
+    /* ===== Global Reset ===== */
+    * { margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    body, html { 
+        height: 100%;
+        font-family: Arial, sans-serif;
+    }
+
+    /* ===== Background ===== */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      z-index: 0;
+    }
+    
+    /* Background image layer */
+    body::before {
+      content: "";
+      background: url('images/classroom_backdrop.png') no-repeat center center fixed;
+      background-size: cover;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -2;
+    }
+    
+    /* Green overlay layer */
+    body::after {
+      content: "";
+      background: rgba(8, 140, 60, 0.4); /* #088c3c with 40% opacity */
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+    }
+
+    /* ===== Top Navigation Bar Placeholder ===== */
+    .top-nav {
+      width: 100%;
+      background-color: #003f7f;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.5rem;
+      position: fixed;
+      top: 0;
+      left: 0; right: 0;
+      z-index: 1000;
+      height: 3rem;
+    }
+
+    /*— Give the center area room to breathe —*/
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* subtract nav + footer from full viewport height: */
+      min-height: calc(100vh - 6rem);
+      padding: 1rem;             /* optional inner padding */
+    }
+
+    /* ===== Login Container ===== */
+    .login-container {
+      background: rgba(255, 255, 255, 0.9);
+      max-width: 400px;
+      width: 90%;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      margin: 10rem auto;
+      position: relative;
+      text-align: center;
+    }
+
+    /* ===== Logo ===== */
+    .logo {
+      /* Placeholder for school logo */
+      height: 150px;
+      margin-bottom: 1rem;
+    }
+
+    /* ===== Description ===== */
+    .description {
+      color: #333;
+      font-size: 0.95rem;
+    }
+    .instruction {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.75rem;
+    }
+
+    /* ===== Form Elements ===== */
+    .login-container select,
+    .login-container input {
+      max-width: 350px;
+      width: 90%; 
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    
+    /* Reset the centering for the form block */
+    .login-container .form-group {
+      width: 100%;
+      text-align: left;
+    }
+
+    /* Keep inputs full-width, as before */
+    .login-container .form-group select,
+    .login-container .form-group input[type="password"],
+    .login-container .form-group button {
+      width: 100%;
+    }
+
+    /* Show-code stays on one line and lines up with inputs */
+    .show-code {
+        width: auto;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 1rem 0;
+    }
+    .show-code label {
+      white-space: nowrap;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 0.75rem;
+      background-color: #088c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .login-container button:hover {
+      background-color: #f0ed0a;
+      color: #088c3c;
+    }
+
+
+    /* ===== Support Link ===== */
+    .support {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+    }
+    .support a {
+      color: #00529B;
+      text-decoration: none;
+    }
+    .support a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== Help Icon ===== */
+    .help-icon {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: #00529B;
+    }
+    .help-text {
+      display: none;
+      position: absolute;
+      top: 30px;
+      right: 10px;
+      width: 200px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      font-size: 0.65rem;
+      z-index: 10;
+    }
+    
+        /* ===== Footer Placeholder ===== */
+    .top-nav,
+    .footer {
+      position: fixed;
+      left: 0; right: 0;
+      z-index: 1000;
+    }
+    .footer {
+      width: 100%;
+      background-color: #003f7f;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.5rem;
+      position: fixed;
+      bottom: 0;
+      left: 0; right: 0;
+      z-index: 1000;
+      height: 3rem;
+    }
+    
+    @media (max-width: 400px) {
+  .login-container {
+    padding: 1rem;        /* less padding on tiny screens */
+  }
+
+  .logo {
+    height: 100px;        /* scale logo down */
+  }
+
+  .top-nav, .footer {
+    font-size: 0.7rem;    /* smaller text in nav/footer */
+    padding: 0.5rem;
+  }
+
+  .login-container button {
+    padding: 0.5rem;      /* smaller button on mobiles */
+    font-size: 0.9rem;
+  }
+
+  .show-code {
+    gap: 0.25rem;         /* tighter checkbox spacing */
+    font-size: 0.8rem;
+  }
+}

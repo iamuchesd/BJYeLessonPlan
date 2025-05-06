@@ -1,0 +1,119 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <!-- Page metadata -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BJYMS eLessonPlan Login</title>
+
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+  
+  </head>
+<body>
+    
+    <!-- ===== Top Nav Bar Placeholder ===== -->
+    <nav class="top-nav">
+      You can put in the school NavBar here to retain consistency with the other portal pages.<p>Also crosscheck the stylesheet to ensure consistency</p>
+    </nav>
+
+<div class="main-content">
+  <!-- Main login box -->
+  <div class="login-container">
+      
+    <!-- Help icon and hidden message -->
+    <div class="help-icon" onclick="toggleHelp()">?</div>
+    <div class="help-text" id="helpText">
+      <h3>This page was designed and scripted by <b>StarphicsDesign</b></h3><p>(This info can safely be edited or removed from the code)
+    </div>
+    
+    <!-- Placeholder for school logo -->
+<img src="images/bjy_logo.png" alt="Bishop James Yisa Memorial School Logo" class="logo" />
+
+<!-- Brief description -->
+<p class="description">
+  Welcome to the eLessonPlan portal of <b>Bishop James Yisa Memorial School</b>.
+  <p class="instruction">
+  Please select your department and enter the access code to continue.</p>
+</p>
+
+<!-- Department + access code form -->
+<div class="form-group">
+<select id="department">
+  <!-- Note: Departments and their codes are defined in the JS below -->
+  <!-- Drop down menu -->
+  <option value="">-- Select Department --</option>
+  <option value="languages">Languages</option>
+  <option value="socialSciences">Social Sciences</option>
+  <option value="mathematics">Mathematics & Computer</option>
+  <option value="sciences">Sciences</option>
+</select>
+
+<!-- Access Code input -->
+<input type="password" id="accessCode" placeholder="Enter Access Code" />
+
+<!-- Show Access Code checkbox -->
+<div class="show-code">
+  <input type="checkbox" id="toggleCode" onclick="toggleAccessCode()" />
+  <label for="toggleCode">Show Access Code</label>
+</div>
+
+<!-- Login Button -->
+<button onclick="validateLogin()">Login</button>
+</div>
+
+<!-- Support contact -->
+<p class="support">
+  Need help? <a href="https://wa.me/2348173827324" target="_blank">Contact Support</a>
+</p>
+  </div>  
+</div>
+  
+  <!-- ===== Footer Placeholder ===== -->
+<footer class="footer">
+  You can put in the school Footer here to retain consistency with the other portal pages.<p>Also crosscheck the stylesheet to ensure consistency</p>
+</footer>
+  
+  <!-- JavaScript: validation logic -->  
+  <script>
+    // ===== Preset access codes mapped by department, can bd edited here, no need for back end server, jist that it is not really secure. anyone can use the INSPECT in their browser to view the codes =====
+    const accessCodes = {
+      languages: 'langcode',          // code for Languages dept
+      socialSciences: 'sosscode',   // code for Social Sciences
+      mathematics: 'mathcode',        // code for Mathematics
+      sciences: 'sciscode' // code for Sciences
+    };
+
+    // ===== Function to toggle help text =====
+    function toggleHelp() {
+      const help = document.getElementById('helpText');
+      help.style.display = (help.style.display === 'block') ? 'none' : 'block';
+    }
+    
+    // ===== Show Access Code checkbox =====
+        function toggleAccessCode() {
+      const codeInput = document.getElementById('accessCode');
+      codeInput.type = codeInput.type === 'password' ? 'text' : 'password';
+    }
+
+    // ===== Main login validation =====
+    function validateLogin() {
+      const dept = document.getElementById('department').value;
+      const code = document.getElementById('accessCode').value;
+
+      // If no department selected
+      if (!dept) {
+        alert('Please select a department.');
+        return;
+      }
+
+      // Check that entered code matches preset code for that department
+      if (accessCodes[dept] === code) {
+  // Redirect to your desired page (e.g., dashboard.html)
+  window.location.href = `dashboard.html?dept=${dept}`; // replace with your actual destination page
+    } else {
+        alert('Incorrect access code. Please try again.');
+      }
+    }
+  </script>
+  </body>
+</html>

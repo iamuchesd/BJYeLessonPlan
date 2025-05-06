@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    .dashboard-message {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #00529B;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-message" id="dashboardMessage">
+    Loading...
+  </div>
+
+  <script>
+    // Map keys to readable department names
+    const departmentNames = {
+      languages: "Languages",
+      socialSciences: "Social Sciences",
+      mathematics: "Mathematics",
+      computerSciences: "Computer Sciences"
+    };
+
+    // Get the department from the URL query parameter
+    const params = new URLSearchParams(window.location.search);
+    const deptKey = params.get("dept");
+
+    const messageEl = document.getElementById("dashboardMessage");
+
+    if (deptKey && departmentNames[deptKey]) {
+      messageEl.textContent = `This is the dashboard for ${departmentNames[deptKey]} Department`;
+    } else {
+      messageEl.textContent = "Department not recognized.";
+    }
+  </script>
+</body>
+</html>
